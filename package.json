@@ -5,10 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy": "aws s3 sync ./dist s3://beta.clock.com",
+    "invalidation": "aws cloudfront create-invalidation --distribution-id E15G3RVA2Z4N1W --paths /*",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.39",
     "register-service-worker": "^1.7.2",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
