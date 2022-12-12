@@ -1,13 +1,13 @@
 <template>
   <div class="app">
-    <Header />
+    <HeaderVue />
 
     <router-view/>
   </div>
 </template>
 
 <script setup>
-import Header from '@/components/Header.vue';
+import HeaderVue from './components/Header.vue';
 </script>
 
 <style>
@@ -25,8 +25,6 @@ div {
 
 .app {
   font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
-  max-width: 1036px;
-  margin: 0 auto;
 }
 
 a:-webkit-any-link {
@@ -52,5 +50,13 @@ a:hover {
 a:active {
     color: black;
     text-decoration: none;
+}
+
+select {
+  cursor: pointer;
+}
+
+select:focus {
+    outline: none;
 }
 </style>
