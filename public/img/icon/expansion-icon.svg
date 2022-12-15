@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.004" height="22.988" viewBox="0 0 23.004 22.988">
+  <g id="그룹_37" data-name="그룹 37" transform="translate(-1179.587 -86.231)">
+    <g id="그룹_34" data-name="그룹 34" transform="translate(179 286.754)">
+      <g id="그룹_30" data-name="그룹 30" transform="translate(1014.131 -199.328)">
+        <path id="패스_19" data-name="패스 19" d="M0,3.849,3.849,0,7.757,3.909" transform="translate(2.78 0) rotate(45)" fill="none" stroke="#727270" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <path id="패스_20" data-name="패스 20" d="M0,0V7.412" transform="translate(5.241 2.992) rotate(45)" fill="none" stroke="#727270" stroke-linecap="round" stroke-width="1.4"/>
+      </g>
+      <g id="그룹_32" data-name="그룹 32" transform="translate(1014.131 -186.979)">
+        <path id="패스_19-2" data-name="패스 19" d="M0,.06,3.849,3.909,7.757,0" transform="translate(0.016 5.485) rotate(-45)" fill="none" stroke="#727270" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <path id="패스_20-2" data-name="패스 20" d="M0,7.412V0" transform="translate(0 0.016) rotate(-45)" fill="none" stroke="#727270" stroke-linecap="round" stroke-width="1.4"/>
+      </g>
+      <g id="그룹_31" data-name="그룹 31" transform="translate(1001.782 -199.328)">
+        <path id="패스_19-3" data-name="패스 19" d="M0,.06,3.849,3.909,7.757,0" transform="translate(8.249 2.764) rotate(135)" fill="none" stroke="#727270" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <path id="패스_20-3" data-name="패스 20" d="M0,7.412V0" transform="translate(8.265 8.233) rotate(135)" fill="none" stroke="#727270" stroke-linecap="round" stroke-width="1.4"/>
+      </g>
+      <g id="그룹_33" data-name="그룹 33" transform="translate(1001.782 -186.979)">
+        <path id="패스_19-4" data-name="패스 19" d="M0,3.849,3.849,0,7.757,3.909" transform="translate(5.485 8.249) rotate(-135)" fill="none" stroke="#727270" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+        <path id="패스_20-4" data-name="패스 20" d="M0,0V7.412" transform="translate(3.024 5.257) rotate(-135)" fill="none" stroke="#727270" stroke-linecap="round" stroke-width="1.4"/>
+      </g>
+    </g>
+  </g>
+</svg>

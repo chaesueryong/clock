@@ -4,6 +4,8 @@
 
         <div class="content">
 
+            <img class="content-x-btn" src="../../public/img/icon/x-icon.svg" @click="closeModal">
+
             <div class="modal-title">알람설정</div>
             <div class="bar"></div>
 
@@ -11,22 +13,22 @@
                 <div class="content-item-box">
                     <div class="content-item-title">시간선택</div>
                     <div style="display: flex; flex: 1">
-                        <select class="select-am-pm">
+                        <select class="select-am-pm" v-model="amPm">
                             <option>오전</option>
                             <option>오후</option>
                         </select>
          
                         <div class="content-time-box" style="margin-right: 7px;">
-                            <select class="select-time">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
+                            <select class="select-time" v-model="hour">
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                                <option>04</option>
+                                <option>05</option>
+                                <option>06</option>
+                                <option>07</option>
+                                <option>08</option>
+                                <option>09</option>
                                 <option>10</option>
                                 <option>11</option>
                                 <option>12</option>
@@ -34,7 +36,7 @@
                             <div>시</div>
                         </div>
                         <div class="content-time-box">
-                            <select class="select-time">
+                            <select class="select-time" v-model="minute">
                                 <option>00</option>
                                 <option>01</option>
                                 <option>02</option>
@@ -102,14 +104,9 @@
                 </div>
 
                 <div class="content-item-box">
-                    <div class="content-item-title">빠른설정</div>
-                    <div style="flex: 1;"></div>
-                </div>
-
-                <div class="content-item-box">
                     <div class="content-item-title">알림음</div>
                     <div style="display: flex; flex: 1; align-items: center; justify-content: space-between">
-                        <select class="select-alarm-music">
+                        <select class="select-alarm-music" v-model="alarmMusic">
                             <option>새소리</option>
                         </select>
 
@@ -125,7 +122,7 @@
 
                         <div style="display: flex; gap: 5px; align-items: center;">
                             <div class="check-icon-box">
-                                <img src="../../public/img/icon/play-icon.svg">
+                                <img src="../../public/img/icon/check-0-icon.svg">
                             </div>
                             <div style="font-size: 12px; color: #242627">반복재생</div>
                         </div>
@@ -134,37 +131,52 @@
 
                 <div class="content-item-box">
                     <div class="content-item-title">알람이름</div>
-                    <input class="input-alarm-name" placeholder="알람 이름을 입력하세요.">
+                    <input class="input-alarm-name" placeholder="알람 이름을 입력하세요." v-model="alarmName">
                 </div>
 
             </div>
 
             <div class="content-btn-box">
                 <div class="modal-cancel" @click="closeModal">취소</div>
-                <div class="modal-add-alarm-btn">설정하기</div>
+                <div class="modal-add-alarm-btn" @click="settingAlarm">설정하기</div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits, onMounted } from "vue";
+import { defineEmits, onMounted, ref } from "vue";
 
-const props = defineProps({
-
-});
+const amPm = ref('오전');
+const hour = ref('01');
+const minute = ref('00');
+const alarmMusic = ref('새소리');
+const alarmName = ref('');
 
 const emit = defineEmits([
-  'addAlarm',
-  'closeModal'
+  'setAlarm',
+  'closeSetAlarmModal'
 ]);
 
 const closeModal = () => {
-    emit('closeModal');
+    emit('closeSetAlarmModal');
+}
+
+const settingAlarm = () => {
+    emit('setAlarm', {
+        amPm: amPm.value,
+        hour: hour.value,
+        minute: minute.value,
+        alarmMusic: alarmMusic.value,
+        alarmName: alarmName.value,
+        fullTime: amPm.value === '오전' ?
+         hour.value + '-' + minute.value
+         : String(Number(hour.value) + 12) + '-' + minute.value
+    });
 }
 
 onMounted(() => {
-    console.log('mounted')
+
 })
 
 </script>
@@ -194,9 +206,16 @@ onMounted(() => {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #F7F7F7;
-    border-radius: 28px;
+    border-radius: 8px;
 
     padding: 0 23px;
+}
+
+.content-x-btn {
+    position: absolute;
+    top: 16px;
+    right: 25px;
+    cursor: pointer;
 }
 
 .modal-title {
@@ -204,6 +223,7 @@ onMounted(() => {
     margin: 29px 0 10px 0;
     font-weight: 700;
     color: #727270;
+    font-size: 14px;
 }
 
 .bar {
@@ -294,9 +314,12 @@ onMounted(() => {
     height: 18px;
     border: 0.5px solid #BFBFBF;
     border-radius: 50%;
+    cursor: pointer;
 }
 
-
+.check-icon-box:hover { 
+    background-color: #eeeeee;
+}
 
 
 
@@ -321,15 +344,21 @@ onMounted(() => {
 
 .modal-cancel {
     cursor: pointer;
+    font-size: 12px;
     color: #727270;
 }
 
 .modal-add-alarm-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     background-color: #67CDFD;
-    padding: 10px 22px 10px 22px;
+    width: 83px;
+    height: 28px;
     border-radius: 500px;
     font-weight: 700;
+    font-size: 12px;
     cursor: pointer;
 }
 

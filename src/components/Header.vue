@@ -21,7 +21,7 @@
             </div>
 
             <div class="setting-box">
-                <img class="switch-mode" src="../../public/img/icon/switch-icon.svg" >
+                <img class="switch-mode" @click="toggle" src="../../public/img/icon/switch-icon.svg" >
                 <img class="setting"  src="../../public/img/icon/setting-icon.svg" >
             </div>
         </div>
@@ -32,6 +32,11 @@
 import {useRoute} from 'vue-router'
 
 const route = useRoute();
+
+
+const toggle = () => {
+    document.documentElement.classList.toggle('dark');
+}
 </script>
   
 <style>

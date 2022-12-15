@@ -28,7 +28,7 @@
                 <div style="font-size: 1em; margin-bottom: 12px; font-weight: 200;">현재시간</div>
                 <div style="font-size: 4em; margin-bottom: 20px; font-weight: 400;">{{currentTime.time}}</div>
                 <div style="font-size: 1.2em; margin-bottom: 58px; font-weight: 200;">{{currentTime.date}}</div>
-                <div class="alarm-add-btn" @click="showModal" v-if="currentAlarm === null">알람설정</div>
+                <div class="alarm-add-btn" @click="showModal" v-if="currentAlarm === null">추가</div>
             </div>
         </div>
 

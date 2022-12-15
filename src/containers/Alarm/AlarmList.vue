@@ -32,25 +32,13 @@ import AlarmItem from '@/components/AlarmItem.vue';
 </script>
 
 <style>
-.alarm-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 1036px;
-    height: 587px;
-    background-color: #F7F7F7;
-    border-radius: 28px;
-}
-
 .alarm-list {
+    display: flex;
+    flex-direction: column;
     max-width: 1036px;
     height: 587px;
     background-color: #F7F7F7;
-    border-radius: 28px;
-
-    display: flex;
-    flex-direction: column;
+    border-radius: 8px;
 }
 
 
@@ -68,12 +56,23 @@ import AlarmItem from '@/components/AlarmItem.vue';
 }
 
 .delete-alarm-btn {
-    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    width: 100px;
+    height: 32px;
+    background-color: #A0A0A0;
     color: white;
     border-radius: 500px;
-    padding: 9px 18px;
     margin: auto 0 30px 0;
     align-self: center;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
+}
+
+.delete-alarm-btn:hover {
+    background-color: #c4c4c4;
 }
 </style>
