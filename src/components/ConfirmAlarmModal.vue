@@ -66,7 +66,7 @@ onMounted(() => {
   
 <style>
 .confirm-alarm-modal {
-
+    position: fixed;
 }
 
 .confirm-alarm-background {
@@ -76,8 +76,7 @@ onMounted(() => {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
-    opacity: 0.4;
+    background-color: var(--modal-bg-color-1);
 }
 
 .confirm-alarm-content {
@@ -88,7 +87,7 @@ onMounted(() => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #F7F7F7;
+    background-color: var(--bg-color-1);
     border-radius: 8px;
 
     padding: 0 23px;
@@ -105,12 +104,12 @@ onMounted(() => {
     text-align: center;
     margin: 29px 0 10px 0;
     font-weight: 700;
-    color: #727270;
+    color: var(--text-color-2);
     font-size: 14px;
 }
 
 .bar {
-    border-bottom: 1px solid #BFBFBF;
+    border-bottom: 1px solid var(--border-color-2);
 }
 
 .confirm-alarm-content-box {
@@ -136,7 +135,7 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     color: white;
-    background-color: #67CDFD;
+    background-color: var(--bg-color-4);
     width: 83px;
     height: 28px;
     border-radius: 500px;
@@ -147,7 +146,7 @@ onMounted(() => {
 
 
 .confirm-alarm-btn:hover {
-    background-color: #67CDFDB8;
+    background-color: var(--bg-hover-color-1);
 }
 </style>
   

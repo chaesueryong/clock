@@ -32,16 +32,13 @@
             </div>
         </div>
 
-        <div></div>
-        <!-- <img class="alarm-down-arrow" src="../../../public/img/icon/down-arrow-icon.svg" > -->
+        <div v-show="fullScreen"></div>
+        <img class="alarm-down-arrow" src="../../../public/img/icon/down-arrow-icon.svg" v-show="!fullScreen">
 
-        <div style="position: fixed;" v-if="setAlarmModalStatus">
-            <SetTimeModal @setAlarm="setAlarm" @closeSetAlarmModal="closeSetAlarmModal" />
-        </div>
+        <SetTimeModal @setAlarm="setAlarm" @closeSetAlarmModal="closeSetAlarmModal" v-if="setAlarmModalStatus" />
+        
+        <AlarmModal :destinationAlarm="destinationAlarm" @confirmAlarm="confirmAlarm" @closeConfirmModal="closeConfirmModal" v-if="confirmModalStatus" />
 
-        <div style="position: fixed;" v-if="confirmModalStatus">
-            <AlarmModal :destinationAlarm="destinationAlarm" @confirmAlarm="confirmAlarm" @closeConfirmModal="closeConfirmModal" />
-        </div>
     </div>
 </template>
 
@@ -221,10 +218,11 @@ const setAlarm = (obj) => {
     align-items: center;
     width: 279px;
     height: 279px;
-    border: 8px solid #67CDFD3D;
+    border: 8px solid var(--border-color-1);
     box-sizing: border-box;
     border-radius: 50%;
     margin-bottom: 10px;
+    color: var(--text-color-2);
 }
 
 .alarm-stop-btn {
@@ -234,14 +232,14 @@ const setAlarm = (obj) => {
     width: 100px;
     height: 32px;
     color: white;
-    background-color: #F7C628;
+    background-color: var(--bg-color-5);
     border-radius: 500px;
     font-size: 14px;
     cursor: pointer;
 }
 
 .alarm-stop-btn:hover {
-    background-color: #f8d45c;
+    background-color: var(--bg-hover-color-2);
 }
 
 .current-alarm-box {
@@ -258,15 +256,16 @@ const setAlarm = (obj) => {
     justify-content: center;
     align-items: center;
     font-size: 16px;
+    color: var(--text-color-1);
 }
 
 .clock-box-alarm {
     font-size: 10px;
-    color: #727270;
+    color: var(--text-color-2);
 }
 
 .alarm-down-arrow {
-    margin-bottom: 29px;
+    margin-bottom: 30px;
 }
 
 .alarm-add-btn {
@@ -277,13 +276,13 @@ const setAlarm = (obj) => {
     width: 100px;
     height: 32px;
     color: white;
-    background-color: #67CDFD;
+    background-color: var(--bg-color-4);
     border-radius: 500px;
     font-weight: 700;
     cursor: pointer;
 }
 
 .alarm-add-btn:hover {
-    background-color: #67CDFDB8;
+    background-color: var(--bg-hover-color-1);
 }
 </style>

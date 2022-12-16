@@ -2,7 +2,7 @@
     <div class="alarm">
 
         <AlarmClock />
-        <!-- <AlarmList /> -->
+        <AlarmList />
 
     </div>
 </template>
@@ -15,7 +15,7 @@ import AlarmList from '@/containers/Alarm/AlarmList.vue';
 
 <style>
 .alarm {
-    
+    overflow: auto;
 }
 
 </style>

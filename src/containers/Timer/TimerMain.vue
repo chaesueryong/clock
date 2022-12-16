@@ -38,9 +38,11 @@ const addAlarm = () => {
     align-items: center;
     max-width: 1036px;
     height: 696px;
-    background-color: #F7F7F7;
+    background-color: var(--bg-color-1);
     border-radius: 8px;
     margin: 12px auto 8px auto;
+
+    color: var(--text-color-1);
 }
 
 </style>

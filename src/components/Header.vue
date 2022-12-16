@@ -29,14 +29,31 @@
 </template>
 
 <script setup>
+import { LS } from '@/modules/LocalStorage';
+import { onMounted } from 'vue';
 import {useRoute} from 'vue-router'
 
 const route = useRoute();
 
-
 const toggle = () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    if(isDark){
+        LS.set('dark', 'false');
+    }else{
+        LS.set('dark', 'true');
+    }
     document.documentElement.classList.toggle('dark');
 }
+
+onMounted(() => {
+   const isDark = LS.get('dark');
+   if(isDark === 'true'){
+        document.documentElement.classList.add('dark');
+   }else {
+        document.documentElement.classList.remove('dark');
+   }
+})
+
 </script>
   
 <style>

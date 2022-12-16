@@ -120,11 +120,11 @@
                             </div>
                         </div>
 
-                        <div style="display: flex; gap: 5px; align-items: center;">
+                        <div class="repeat-box">
                             <div class="check-icon-box">
                                 <img src="../../public/img/icon/check-0-icon.svg">
                             </div>
-                            <div style="font-size: 12px; color: #242627">반복재생</div>
+                            <div>반복재생</div>
                         </div>
                     </div>
                 </div>
@@ -183,7 +183,7 @@ onMounted(() => {
   
 <style>
 .set-time-modal {
-
+    position: fixed;
 }
 
 .background {
@@ -193,8 +193,7 @@ onMounted(() => {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
-    opacity: 0.4;
+    background-color: var(--modal-bg-color-1);
 }
 
 .content {
@@ -205,7 +204,7 @@ onMounted(() => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #F7F7F7;
+    background-color: var(--bg-color-2);
     border-radius: 8px;
 
     padding: 0 23px;
@@ -222,12 +221,12 @@ onMounted(() => {
     text-align: center;
     margin: 29px 0 10px 0;
     font-weight: 700;
-    color: #727270;
+    color: var(--text-color-2);
     font-size: 14px;
 }
 
 .bar {
-    border-bottom: 1px solid #BFBFBF;
+    border-bottom: 1px solid var(--border-color-2);
 }
 
 .content-box {
@@ -254,7 +253,9 @@ onMounted(() => {
     border-radius: 500px;
     margin-right: auto;
     font-size: 12px;
-    border: 0.5px solid #BFBFBF;
+    border: 0.5px solid var(--border-color-2);
+    color: #242627;
+    background-color: var(--bg-color-7);
 }
 
 .select-time {
@@ -263,14 +264,16 @@ onMounted(() => {
     text-align: center;
     border-radius: 500px;
     font-size: 12px;
-    border: 0.5px solid #BFBFBF;
+    border: 0.5px solid var(--border-color-2);
+    color: #242627;
+    background-color: var(--bg-color-7);
 }
 
 
 .content-time-box {
     display: flex;
     align-items: center;
-    color: #242627;
+    color: var(--text-color-1);
     font-size: 14px;
     gap: 5px;
 }
@@ -278,7 +281,7 @@ onMounted(() => {
 .content-item-title {
     width: 95px;
     font-size: 12px;
-    color: #242627;
+    color: var(--text-color-1);
 }
 
 .select-alarm-music {
@@ -288,7 +291,9 @@ onMounted(() => {
     box-sizing: border-box;
     font-size: 12px;
     padding: 0 16px;
-    border: 0.5px solid #BFBFBF;
+    border: 0.5px solid var(--border-color-2);
+    color: #242627;
+    background-color: var(--bg-color-7);
 }
 
 .icon-box {
@@ -297,7 +302,7 @@ onMounted(() => {
     align-items: center;
     width: 28px;
     height: 28px;
-    border: 0.5px solid #BFBFBF;
+    border: 0.5px solid var(--border-color-2);
     border-radius: 50%;
     cursor: pointer;
 }
@@ -312,13 +317,21 @@ onMounted(() => {
     align-items: center;
     width: 18px;
     height: 18px;
-    border: 0.5px solid #BFBFBF;
+    border: 0.5px solid var(--border-color-2);
     border-radius: 50%;
     cursor: pointer;
 }
 
 .check-icon-box:hover { 
     background-color: #eeeeee;
+}
+
+.repeat-box {
+    display: flex;
+    gap: 5px; 
+    align-items: center;
+    font-size: 12px;
+    color: var(--text-color-1);
 }
 
 
@@ -329,7 +342,7 @@ onMounted(() => {
     border-radius: 500px;
     box-sizing: border-box;
     font-size: 10px;
-    border: 0.5px solid #BFBFBF;
+    border: 0.5px solid var(--border-color-2);
     padding: 0 18px;
 }
 
@@ -345,7 +358,7 @@ onMounted(() => {
 .modal-cancel {
     cursor: pointer;
     font-size: 12px;
-    color: #727270;
+    color: var(--text-color-1);
 }
 
 .modal-add-alarm-btn {
@@ -353,7 +366,7 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     color: white;
-    background-color: #67CDFD;
+    background-color: var(--bg-color-4);
     width: 83px;
     height: 28px;
     border-radius: 500px;
@@ -364,7 +377,7 @@ onMounted(() => {
 
 
 .modal-add-alarm-btn:hover {
-    background-color: #67CDFDB8;
+    background-color: var(--bg-hover-color-1);
 }
 </style>
   
