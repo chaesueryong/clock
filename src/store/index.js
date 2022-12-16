@@ -1,14 +1,8 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import systemStore from './systemStore';
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
+    systemStore
   }
 })

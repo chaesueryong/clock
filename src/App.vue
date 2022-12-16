@@ -93,6 +93,7 @@ select:focus {
   --border-color-2: #BFBFBF;
   --text-color-1: #242627;
   --text-color-2: #727270;
+  --text-color-3: #242627;
 
   --modal-bg-color-1: #45454580;
 }
@@ -113,6 +114,7 @@ select:focus {
   --border-color-2: #DEDEDE;
   --text-color-1: #FFFFFF;
   --text-color-2: #BFBFBF;
+  --text-color-3: #BFBFBF;
 }
 
 

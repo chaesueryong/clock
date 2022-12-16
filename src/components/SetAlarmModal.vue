@@ -20,6 +20,7 @@
          
                         <div class="content-time-box" style="margin-right: 7px;">
                             <select class="select-time" v-model="hour">
+                                <option>00</option>
                                 <option>01</option>
                                 <option>02</option>
                                 <option>03</option>
@@ -148,7 +149,7 @@
 import { defineEmits, onMounted, ref } from "vue";
 
 const amPm = ref('오전');
-const hour = ref('01');
+const hour = ref('00');
 const minute = ref('00');
 const alarmMusic = ref('새소리');
 const alarmName = ref('');

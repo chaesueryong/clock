@@ -1,17 +1,17 @@
 <template>
-    <div class="alarm-box" :class="[fullScreen ? 'alarm-box-full' : '']">
+    <div class="alarm-box" :class="[fullScreen ? 'alarm-box-full' : '', route.path === '/clock' ? 'clock-box-clock': '']">
 
         <div class="option-box">
             <img class="option-img" src="../../../public/img/icon/share-icon.svg">
             <img class="option-img" src="../../../public/img/icon/+-icon.svg">
             <img class="option-img" src="../../../public/img/icon/--icon.svg">
-            <img class="option-img" @click="setFullScreen" src="../../../public/img/icon/expansion-icon.svg">
+            <img class="option-img" @click="System.toggleScreen()" src="../../../public/img/icon/expansion-icon.svg">
         </div>
 
         <div></div>
 
         <div style="display: flex; flex-direction: column; align-items: center;">
-            <div class="current-alarm-box" v-if="currentAlarm !== null">
+            <div class="current-alarm-box" v-if="currentAlarm !== null && route.path === '/'">
                 <div class="current-alarm">
                     <div style="font-size: 14px; margin-bottom: 24px; font-weight: 200;">알람</div>
                     <div style="font-size: 56px; margin-bottom: 25px; font-weight: 400;">{{remainedTime.hours + ':' + remainedTime.minutes + ':' + remainedTime.seconds}}</div>
@@ -23,17 +23,18 @@
 
                 <div class="alarm-stop-btn" @click="clearAlarm">중지</div>
             </div>
-
-            <div class="clock-box" :class="[currentAlarm !== null ? 'clock-box-alarm' : '']">
+ 
+            <div class="clock-box" :class="[currentAlarm !== null && route.path === '/' ? 'clock-box-alarm' : '']">
                 <div style="font-size: 1em; margin-bottom: 12px; font-weight: 200;">현재시간</div>
                 <div style="font-size: 4em; margin-bottom: 20px; font-weight: 400;">{{currentTime.time}}</div>
                 <div style="font-size: 1.2em; margin-bottom: 58px; font-weight: 200;">{{currentTime.date}}</div>
-                <div class="alarm-add-btn" @click="showModal" v-if="currentAlarm === null">알람설정</div>
+                <div class="alarm-add-btn" @click="showSetAlarmModal" v-if="currentAlarm === null && route.path === '/'">알람설정</div>
+                <div class="alarm-add-btn" @click="showAddClockModal" v-if="route.path === '/clock'">추가</div>
             </div>
         </div>
 
-        <div v-show="fullScreen"></div>
-        <img class="alarm-down-arrow" src="../../../public/img/icon/down-arrow-icon.svg" v-show="!fullScreen">
+        <div v-show="fullScreen || route.path === '/clock'"></div>
+        <img class="alarm-down-arrow" src="../../../public/img/icon/down-arrow-icon.svg" v-show="!fullScreen && route.path === '/'">
 
         <SetTimeModal @setAlarm="setAlarm" @closeSetAlarmModal="closeSetAlarmModal" v-if="setAlarmModalStatus" />
         
@@ -43,46 +44,34 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed, watchEffect } from 'vue';
 import moment from 'moment-timezone';
 import SetTimeModal from '@/components/SetAlarmModal.vue';
 import AlarmModal from '@/components/ConfirmAlarmModal.vue';
 import {LS} from '@/modules/LocalStorage';
+import { System } from '@/modules/System';
+import { useStore } from 'vuex';
+import {useRoute} from 'vue-router';
 
-const fullScreen = ref(false);
+const store = useStore();
+const route = useRoute();
 
-const currentTime = ref({});
+const fullScreen = computed(() => store.state.systemStore.fullScreen);
+const currentMoment = computed(() => store.state.systemStore.moment);
+
+const currentTime = ref({})
 
 const setAlarmModalStatus = ref(false);
 const confirmModalStatus = ref(false);
 
 const currentAlarm = ref(null);
-const currentSetInterVal = ref(null);
 const remainedTime = ref('');
 
 const destinationAlarm = ref('');
 
 onMounted(() => {
     getAlarm();
-    setCurrentTime();
-    window.addEventListener('resize', function () {
-        if ((screen.availHeight || screen.height - 30) <= window.innerHeight) {
-            fullScreen.value = true;
-        }
-        else {
-            fullScreen.value = false;
-        }
-    });
 })
-
-const setFullScreen = () => {
-    fullScreen.value = !fullScreen.value;
-    if(fullScreen.value === true){
-        document.documentElement.requestFullscreen();
-    }else{
-        document.exitFullscreen();
-    }
-}
 
 const clearAlarm = () => {
     currentAlarm.value = null;
@@ -97,13 +86,6 @@ const getAlarm = () => {
 const confirmAlarm = () => {
     clearAlarm();
     closeConfirmModal();
-}
-
-const setCurrentTime = () => {
-    getCurrentTime();
-    currentSetInterVal.value = setInterval(() => {
-        getCurrentTime();
-    }, 1000);
 }
 
 const setDifftime = (currnetMoment, currentTime) => {
@@ -140,10 +122,13 @@ const setDifftime = (currnetMoment, currentTime) => {
 }
 
 const getCurrentTime = () => {
-    const m = moment().tz("Asia/Seoul");
+    if(currentMoment.value === null){
+        return;
+    }
+    const m = currentMoment.value;
     const amOrPm = m.format("a") === 'am' ? '오전' : '오후';
     const date = m.format("YYYY년 MM월 DD일");
-    const time = m.format("hh:mm:ss");
+    const time = m.format("HH:mm:ss");
     const dayOfTheWeekArr = ['일', '월', '화', '수', '목', '금', '토'];
     currentTime.value = {
         date: date + ' ' + dayOfTheWeekArr[m.day()],
@@ -154,8 +139,12 @@ const getCurrentTime = () => {
     }
 };
 
-const showModal = () => {
+const showSetAlarmModal = () => {
     setAlarmModalStatus.value = true;
+}
+
+const showAddClockModal = () => {
+
 }
 
 const closeSetAlarmModal = () => {
@@ -172,6 +161,10 @@ const setAlarm = (obj) => {
     closeSetAlarmModal();
     getCurrentTime();
 }
+
+watchEffect(() => {
+    getCurrentTime();
+})
 </script>
 
 <style>
@@ -190,8 +183,8 @@ const setAlarm = (obj) => {
 
 .alarm-box-full {
     position: fixed;
-    width: 100vw;
-    height: 100vh;
+    width: 100vw !important;
+    height: 100vh !important;
     top: 0;
     left: 0;
     margin: 0;
@@ -222,7 +215,7 @@ const setAlarm = (obj) => {
     box-sizing: border-box;
     border-radius: 50%;
     margin-bottom: 10px;
-    color: var(--text-color-2);
+    color: var(--text-color-1);
 }
 
 .alarm-stop-btn {
@@ -261,7 +254,11 @@ const setAlarm = (obj) => {
 
 .clock-box-alarm {
     font-size: 10px;
-    color: var(--text-color-2);
+    color: var(--text-color-3);
+}
+
+.clock-box-clock {
+    height: 490px;
 }
 
 .alarm-down-arrow {

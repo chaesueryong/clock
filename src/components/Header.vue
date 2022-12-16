@@ -1,9 +1,9 @@
 <template>
     <div class="header">
         <div class="header-wrap">
-            <router-link to="/">
+            <a href="/" replace>
                 <div class="header-logo">WWCLOCK</div>
-            </router-link>
+            </a>
 
             <div style="display:flex; gap: 46px">
                 <router-link to="/">
@@ -21,7 +21,7 @@
             </div>
 
             <div class="setting-box">
-                <img class="switch-mode" @click="toggle" src="../../public/img/icon/switch-icon.svg" >
+                <img class="switch-mode" @click="System.toggleDarkMode()" src="../../public/img/icon/switch-icon.svg" >
                 <img class="setting"  src="../../public/img/icon/setting-icon.svg" >
             </div>
         </div>
@@ -29,29 +29,14 @@
 </template>
 
 <script setup>
-import { LS } from '@/modules/LocalStorage';
+import { System } from '@/modules/System';
 import { onMounted } from 'vue';
-import {useRoute} from 'vue-router'
+import {useRoute} from 'vue-router';
 
 const route = useRoute();
 
-const toggle = () => {
-    const isDark = document.documentElement.classList.contains('dark');
-    if(isDark){
-        LS.set('dark', 'false');
-    }else{
-        LS.set('dark', 'true');
-    }
-    document.documentElement.classList.toggle('dark');
-}
-
 onMounted(() => {
-   const isDark = LS.get('dark');
-   if(isDark === 'true'){
-        document.documentElement.classList.add('dark');
-   }else {
-        document.documentElement.classList.remove('dark');
-   }
+    System.init();
 })
 
 </script>

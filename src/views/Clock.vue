@@ -1,12 +1,11 @@
 <template>
     <div class="clock">
-        <ClockMiain />
+        <AlarmClock />
     </div>
 </template>
 
 <script setup>
-import ClockMiain from '@/containers/Clock/ClockMiain.vue';
-
+import AlarmClock from '@/containers/Alarm/AlarmClock.vue';
 
 </script>
 

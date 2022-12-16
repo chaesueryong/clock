@@ -11,8 +11,8 @@
 
             <div class="confirm-alarm-content-box">
                 <img style="margin-bottom: 31px" src="../../public/img/icon/alarm-1-icon.svg">
-                <div style="font-size: 36px; color: #242627">일어날 시간</div>
-                <div style="color: #242627">{{destinationAlarm}}</div>
+                <div style="font-size: 36px;">일어날 시간</div>
+                <div>{{destinationAlarm}}</div>
             </div>
 
             <div class="confirm-alarm-content-btn-box">
@@ -87,7 +87,7 @@ onMounted(() => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--bg-color-1);
+    background-color: var(--bg-color-2);
     border-radius: 8px;
 
     padding: 0 23px;
@@ -119,6 +119,7 @@ onMounted(() => {
     gap: 16px;
     margin: 50px 0 30px 0;
     padding: 0 70px;
+    color: var(--text-color-3);
 }
 
 
