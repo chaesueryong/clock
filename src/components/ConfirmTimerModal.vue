@@ -1,22 +1,22 @@
 <template>
     <div class="confirm-alarm-modal">
-        <div class="confirm-alarm-background" @click="confirmAlarm"></div>
+        <div class="confirm-alarm-background" @click="confirmTimer"></div>
 
         <div class="confirm-alarm-content">
 
-            <img class="content-x-btn" src="../../public/img/icon/x-icon.svg" @click="confirmAlarm">
+            <img class="content-x-btn" src="../../public/img/icon/x-icon.svg" @click="confirmTimer">
 
-            <div class="modal-title">알람</div>
+            <div class="modal-title">타이머</div>
             <div class="bar"></div>
 
             <div class="confirm-alarm-content-box">
                 <img style="margin-bottom: 31px" src="../../public/img/icon/alarm-1-icon.svg">
-                <div style="font-size: 36px;">일어날 시간</div>
-                <div>{{destinationAlarm}}</div>
+                <div style="font-size: 36px;">Time's up</div>
+                <div>{{setteingTime}}</div>
             </div>
 
             <div class="confirm-alarm-content-btn-box">
-                <div class="confirm-alarm-btn" @click="confirmAlarm">확인</div>
+                <div class="confirm-alarm-btn" @click="confirmTimer">확인</div>
             </div>
         </div>
     </div>
@@ -25,37 +25,30 @@
 <script setup>
 import { defineProps, defineEmits, onMounted, ref } from "vue";
 
-const destinationAlarm = ref('');
+const setteingTime = ref('00:00:00');
 
 onMounted(() => {
-    const amPm = props.destinationAlarm.format('a');
-    const hours = props.destinationAlarm.format('HH');
-    const minutes = props.destinationAlarm.format('mm');
+    if(props.settingTimer){
+        const hours = props.settingTimer.hours < 10 ? '0' + props.settingTimer.hours : props.settingTimer.hours;
+        const minutes = props.settingTimer.minutes < 10 ? '0' + props.settingTimer.minutes : props.settingTimer.minutes;
+        const seconds = props.settingTimer.seconds < 10 ? '0' + props.settingTimer.seconds : props.settingTimer.seconds;
 
-    if(amPm === 'pm'){
-        let renderHours = Number(hours) - 12;
-        renderHours = renderHours < 10 ? '0' + renderHours : renderHours;
-        destinationAlarm.value = '오후 ' + renderHours  + ':' + minutes;
-    }else{
-        destinationAlarm.value = '오전 ' + hours + ':' + minutes;
+        setteingTime.value = hours + ':' + minutes + ':' + seconds;
     }
 })
 
 const props = defineProps([
-    'destinationAlarm'
+    'settingTimer'
 ]);
 
 const emit = defineEmits([
-  'confirmAlarm',
+    'confirmTimer',
 ]);
 
-const confirmAlarm = () => {
-    emit('confirmAlarm');
+const confirmTimer = () => {
+    emit('confirmTimer');
 }
 
-onMounted(() => {
-
-})
 
 </script>
   

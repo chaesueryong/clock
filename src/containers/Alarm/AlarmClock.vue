@@ -71,7 +71,7 @@ const destinationAlarm = ref('');
 
 onMounted(() => {
     getAlarm();
-})
+});
 
 const clearAlarm = () => {
     currentAlarm.value = null;
@@ -128,7 +128,7 @@ const getCurrentTime = () => {
     const m = currentMoment.value;
     const amOrPm = m.format("a") === 'am' ? '오전' : '오후';
     const date = m.format("YYYY년 MM월 DD일");
-    const time = m.format("HH:mm:ss");
+    const time = m.format("hh:mm:ss");
     const dayOfTheWeekArr = ['일', '월', '화', '수', '목', '금', '토'];
     currentTime.value = {
         date: date + ' ' + dayOfTheWeekArr[m.day()],

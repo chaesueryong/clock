@@ -1,5 +1,6 @@
 export class LS {
     static alarm = 'alarm';
+    static timer = 'timer';
 
     static get(key, defaultValue = '') {
         const item = localStorage.getItem(key);
