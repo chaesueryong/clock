@@ -10,94 +10,159 @@
         </div>
 
         <div class="stop-watch-btn-box">
-            <div class="stop-watch-record-btn" @click="recordStopWatch">기록</div>
-            <div class="stop-watch-stop-btn" @click="stopStopWatch">중지</div>
-            <div class="stop-watch-start-btn" @click="startStopWatch">시작</div>
-            <div class="stop-watch-reset-btn" @click="resetStopWatch">초기화</div>
-        </div>
+            <div class="stop-watch-record-btn" :class="[isRecord ? '' : 'display-none']" @click="recordStopWatch">기록</div>
+            <div class="stop-watch-stop-btn" :class="[isStop ? '' : 'display-none']" @click="stopStopWatch">중지</div>
+            <div class="stop-watch-reset-btn" :class="[isReset ? '' : 'display-none']" @click="resetStopWatch">RESET</div>
+            <div class="stop-watch-start-btn" :class="[isStart ? '' : 'display-none']" @click="startStopWatch()">{{startBtn}}</div>        </div>
 
     </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { LS } from '../../modules/LocalStorage';
 
 const interval = ref(null);
 const displayTime = ref({
+    days: '',
     hours: '00',
     minutes: '00',
     seconds: '00',
-    milliseconds: '000'
+    milliseconds: '00'
 });
 
+const startBtn = ref('시작');
+
+const isRecord = ref(false);
+const isStop = ref(false);
+const isStart = ref(true);
+const isReset = ref(false);
+
 const startTime = ref(null);
-const endTime = ref(null);
+const pauseTime = ref(null);
 
 onMounted(() => {
-    if(interval.value !== null) {
-        clearInterval(interval.value)
-    }
+    getTimer();
 })
-
-const stopStopWatch = () => {
-    if(startTime.value){
-        clearInterval(interval.value);
-
-        endTime.value = Date.now();
-    }
-}
 
 const recordStopWatch = () => {
     const record = displayTime.value;
 }
 
-const resetStopWatch = () => {
-    if(startTime.value){
-        clearInterval(interval.value);
+const getTimer = () => {
+    if(interval.value !== null) {
+        clearInterval(interval.value)
+    }
+    const startDate = LS.get(LS.stopWatchStartDate, null);
+    const pauseDate = LS.get(LS.stopWatchPauseDate, null);
 
-        startTime.value = null;
-        displayTime.value = {
-            hours: '00',
-            minutes: '00',
-            seconds: '00',
-            milliseconds: '000'
-        };
+    if(startDate){
+        startTime.value = startDate;
+
+        if(pauseDate){
+            pauseTime.value = pauseDate;
+            isReset.value = true;
+            startBtn.value = '재시작';
+            updateStopWatch(pauseDate);
+        }else{
+            startStopWatch(true);
+        }
     }
 }
 
-const startStopWatch = () => {
+const resetStopWatch = () => {
+    clearInterval(interval.value);
+
+    isRecord.value = false;
+    isStop.value = false;
+
+    isStart.value = true;
+    startBtn.value = '시작';
+    isReset.value = false;
+
+    LS.remove(LS.stopWatchStartDate);
+    LS.remove(LS.stopWatchPauseDate);
+    startTime.value = null;
+    displayTime.value = {
+        days: '',
+        hours: '00',
+        minutes: '00',
+        seconds: '00',
+        milliseconds: '00'
+    };
+}
+
+const stopStopWatch = () => {
+    clearInterval(interval.value);
+
+    isRecord.value = false;
+    isStop.value = false;
+
+    isStart.value = true;
+    startBtn.value = '재시작';
+
+    isReset.value = true;
+
+    LS.set(LS.stopWatchPauseDate, pauseTime.value);
+}
+
+const startStopWatch = (backgroundMode = false) => {
     if(interval.value !== null) {
         clearInterval(interval.value)
     }
 
-    	
+    isRecord.value = true;
+    isStop.value = true;
+    isStart.value = false;
+
     if(!startTime.value) {
-        startTime.value = Date.now();
-    } else {
-        startTime.value += (Date.now() - endTime.value);
+        if(backgroundMode === false){
+            startTime.value = Date.now();   
+        }
+    }else {
+        isReset.value = false;
+        if(backgroundMode === false){
+            startTime.value += (Date.now() - pauseTime.value);
+        }
     }
+    LS.remove(LS.stopWatchPauseDate);
+    LS.set(LS.stopWatchStartDate, startTime.value);
 
     interval.value = setInterval(() => {
-        updateStopWatch();
-    }, 1);
+        updateStopWatch(Date.now());
+    }, 10);
 }
 
-const updateStopWatch = () => {
-    const nowTime = new Date(Date.now() - startTime.value);
+const updateStopWatch = (date) => {
+    pauseTime.value = date;
+    const dateGap = date - startTime.value;
+    const timeGap = new Date(0, 0, 0, 0, 0, 0, date - startTime.value);
 
-    const timeZoneOffset = nowTime.getTimezoneOffset() / 60;
+    const days = Math.floor(dateGap / (1000 * 60 * 60 * 24));     
+    const hours = timeGap.getHours();    
+    const minutes = timeGap.getMinutes();     
+    const seconds = timeGap.getSeconds();      
+    const milliseconds = timeGap.getMilliseconds();     
 
-    const hours = nowTime.getHours();
-    const minutes = nowTime.getMinutes();
-    const seconds = nowTime.getSeconds();
-    const milliseconds = nowTime.getMilliseconds();
-    console.log(milliseconds)
     let h = hours < 10 ? "0" + hours : hours;
     let m = minutes < 10 ? "0" + minutes : minutes;
     let s = seconds < 10 ? "0" + seconds : seconds;
-    let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
+
+    let ms = '';
+    if(milliseconds <= 10){
+        ms = "0" + Math.ceil(milliseconds / 10);
+    }
+    else if(milliseconds > 990){
+        ms = "99";
+    }
+    else if(milliseconds > 90){
+        ms = Math.ceil(milliseconds / 10);
+    }else {
+        ms ="0" + Math.ceil(milliseconds / 10);
+    }
 
     displayTime.value = {
+        days: days,
         hours: h,
         minutes: m,
         seconds: s,
@@ -160,6 +225,10 @@ const updateStopWatch = () => {
 }
 .stop-watch-start-btn:hover {
     background-color: var(--bg-hover-color-1);
+}
+
+.display-none {
+    display: none;
 }
 
 </style>

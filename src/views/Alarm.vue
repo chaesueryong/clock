@@ -2,7 +2,7 @@
     <div class="alarm">
 
         <AlarmClock />
-        <AlarmList />
+        <!-- <AlarmList /> -->
 
     </div>
 </template>

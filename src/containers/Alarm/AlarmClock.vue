@@ -33,8 +33,8 @@
             </div>
         </div>
 
-        <div v-show="fullScreen || route.path === '/clock'"></div>
-        <img class="alarm-down-arrow" src="../../../public/img/icon/down-arrow-icon.svg" v-show="!fullScreen && route.path === '/'">
+        <div></div>
+        <!-- <img class="alarm-down-arrow" src="../../../public/img/icon/down-arrow-icon.svg" v-show="!fullScreen && route.path === '/'"> -->
 
         <SetTimeModal @setAlarm="setAlarm" @closeSetAlarmModal="closeSetAlarmModal" v-if="setAlarmModalStatus" />
         
