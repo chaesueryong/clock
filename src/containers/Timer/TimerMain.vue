@@ -128,6 +128,7 @@ const startTimer = (backgroundMode = false, setNew = false, reset = false) => {
             updateTimer(Date.now());
         }, 100);
     }
+    
 }
 
 const confirmTimer = () => {
