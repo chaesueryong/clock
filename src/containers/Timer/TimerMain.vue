@@ -129,6 +129,7 @@ const startTimer = (backgroundMode = false, setNew = false, reset = false) => {
         }, 100);
     }
     
+    
 }
 
 const confirmTimer = () => {
