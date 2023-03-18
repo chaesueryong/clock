@@ -16,8 +16,8 @@ jobs:
       - name: ckeckcout source code
         uses: actions/checkout@v3
       
-      - name: npm install
-        run: npm install
+      - name: npm ci
+        run: npm ci
         
       - name: build
         run: npm run build
