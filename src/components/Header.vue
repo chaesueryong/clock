@@ -2,7 +2,7 @@
     <div class="header">
         <div class="header-wrap">
             <a href="/" replace>
-                <div class="header-logo">WWCLOCK</div>
+                <div class="header-logo">WWWCLOCK</div>
             </a>
 
             <div style="display:flex; gap: 46px">
