@@ -78,7 +78,7 @@ export default function ClockPage() {
             현재시간 (서울)
           </div>
           <div
-            className="text-7xl mb-4 font-light bg-gradient-to-r from-[var(--text-color-1)] to-[var(--bg-color-4)] bg-clip-text text-transparent"
+            className="text-7xl mb-4 font-bold text-[var(--text-color-1)]"
             style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
           >
             {currentTime.time}
@@ -120,7 +120,7 @@ export default function ClockPage() {
                     </div>
                   </div>
                   <div
-                    className="text-4xl font-semibold text-[var(--bg-color-4)]"
+                    className="text-4xl font-bold text-[var(--text-color-1)]"
                     style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
                   >
                     {clockTimes[clock.id] || '--:--:--'}

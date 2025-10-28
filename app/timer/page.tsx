@@ -176,27 +176,27 @@ export default function TimerPage() {
 
         <div className="animate-fade-in flex items-center gap-5 mb-20">
           {time.days && (
-            <div className="text-5xl font-light text-[var(--bg-color-4)]">
-              {time.days}<span className="text-2xl text-[var(--text-color-2)] ml-2">일</span>
+            <div className="text-5xl font-bold text-[var(--bg-color-4)]">
+              {time.days}<span className="text-2xl font-semibold text-[var(--text-color-2)] ml-2">일</span>
             </div>
           )}
-          <div className="flex items-center text-[80px] font-light">
+          <div className="flex items-center text-[80px] font-bold">
             <span
-              className="min-w-[100px] text-center bg-gradient-to-r from-[var(--text-color-1)] to-[var(--bg-color-4)] bg-clip-text text-transparent"
+              className="min-w-[100px] text-center text-[var(--text-color-1)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               {time.hours}
             </span>
             <span className="opacity-50 animate-blink">:</span>
             <span
-              className="min-w-[100px] text-center bg-gradient-to-r from-[var(--text-color-1)] to-[var(--bg-color-4)] bg-clip-text text-transparent"
+              className="min-w-[100px] text-center text-[var(--text-color-1)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               {time.minutes}
             </span>
             <span className="opacity-50 animate-blink">:</span>
             <span
-              className="min-w-[100px] text-center bg-gradient-to-r from-[var(--text-color-1)] to-[var(--bg-color-4)] bg-clip-text text-transparent"
+              className="min-w-[100px] text-center text-[var(--text-color-1)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               {time.seconds}

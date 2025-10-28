@@ -191,13 +191,13 @@ export default function StopwatchPage() {
         <div className="animate-fade-in mb-16">
           <div className="flex items-baseline gap-1">
             <span
-              className="text-[80px] font-light bg-gradient-to-r from-[var(--text-color-1)] to-[var(--bg-color-4)] bg-clip-text text-transparent"
+              className="text-[80px] font-bold text-[var(--text-color-1)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               {time.minutes}:{time.seconds}
             </span>
             <span
-              className="text-4xl font-light text-[var(--text-color-2)]"
+              className="text-4xl font-semibold text-[var(--text-color-2)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               .{time.milliseconds}
