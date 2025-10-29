@@ -1,12 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useSystemStore } from '@/lib/stores/useSystemStore';
 import { useEffect } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
+  const locale = useLocale();
+  const t = useTranslations();
   const { darkMode, toggleDarkMode } = useSystemStore();
 
   useEffect(() => {
@@ -18,6 +22,25 @@ export default function Header() {
       }
     }
   }, []);
+
+  const switchLocale = () => {
+    const newLocale = locale === 'ko' ? 'en' : 'ko';
+    // Remove current locale from pathname
+    const pathnameWithoutLocale = pathname.replace(/^\/(ko|en)/, '') || '/';
+    // Redirect to new locale
+    const newPath = newLocale === 'ko' ? pathnameWithoutLocale : `/${newLocale}${pathnameWithoutLocale}`;
+    router.push(newPath);
+  };
+
+  // Get pathname without locale for comparison
+  const pathnameWithoutLocale = pathname.replace(/^\/(ko|en)/, '') || '/';
+
+  const navItems = [
+    { href: '/', label: t('alarm.title'), icon: '⏰' },
+    { href: '/timer', label: t('timer.title'), icon: '⏲️' },
+    { href: '/stopwatch', label: t('stopwatch.title'), icon: '⏱️' },
+    { href: '/clock', label: t('worldClock.title'), icon: '🌍' },
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-[var(--bg-color-2)] shadow-md backdrop-blur-md transition-all duration-300">
@@ -32,18 +55,13 @@ export default function Header() {
         </Link>
 
         <nav className="flex gap-3">
-          {[
-            { href: '/', label: '알람', icon: '⏰' },
-            { href: '/timer', label: '타이머', icon: '⏲️' },
-            { href: '/stopwatch', label: '스톱워치', icon: '⏱️' },
-            { href: '/clock', label: '시계', icon: '🌍' },
-          ].map(({ href, label, icon }) => (
+          {navItems.map(({ href, label, icon }) => (
             <Link
               key={href}
               href={href}
               className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl transition-all duration-300 relative
                 ${
-                  pathname === href
+                  pathnameWithoutLocale === href
                     ? 'text-[var(--bg-color-4)] bg-[var(--bg-color-1)] font-bold'
                     : 'text-[var(--text-color-2)] hover:text-[var(--bg-color-4)] hover:bg-[var(--bg-color-1)]'
                 }
@@ -53,7 +71,7 @@ export default function Header() {
                 {icon}
               </span>
               <span className="text-[15px] font-semibold">{label}</span>
-              {pathname === href && (
+              {pathnameWithoutLocale === href && (
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/5 h-0.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] rounded-full" />
               )}
             </Link>
@@ -62,16 +80,24 @@ export default function Header() {
 
         <div className="flex gap-4 items-center">
           <button
+            onClick={switchLocale}
+            className="w-10 h-10 flex items-center justify-center bg-[var(--bg-color-1)] rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:scale-110 active:scale-95 font-semibold text-sm"
+            title="Switch language"
+            aria-label="Switch language"
+          >
+            {locale === 'ko' ? 'EN' : 'KO'}
+          </button>
+          <button
             onClick={toggleDarkMode}
             className="w-10 h-10 flex items-center justify-center bg-[var(--bg-color-1)] rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:rotate-[15deg] hover:scale-110 active:rotate-[15deg] active:scale-95"
-            title="다크모드 전환"
+            title={locale === 'ko' ? '다크모드 전환' : 'Toggle dark mode'}
             aria-label="Toggle dark mode"
           >
             <span className="text-xl">{darkMode ? '🌙' : '☀️'}</span>
           </button>
           <button
             className="w-10 h-10 flex items-center justify-center bg-[var(--bg-color-1)] rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:rotate-[15deg] hover:scale-110 active:rotate-[15deg] active:scale-95"
-            title="설정"
+            title={locale === 'ko' ? '설정' : 'Settings'}
             aria-label="Open settings"
           >
             <span className="text-xl">⚙️</span>
