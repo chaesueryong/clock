@@ -182,22 +182,22 @@ export default function StopwatchPage() {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto p-10 min-h-[700px] bg-gradient-to-br from-[var(--bg-color-1)] to-[var(--bg-color-2)] rounded-3xl my-5 shadow-2xl transition-all duration-300 hover:shadow-3xl">
+    <div className="max-w-[1200px] mx-auto p-3 sm:p-10 min-h-[500px] sm:min-h-[700px] bg-gradient-to-br from-[var(--bg-color-1)] to-[var(--bg-color-2)] rounded-2xl sm:rounded-3xl my-3 sm:my-5 shadow-2xl transition-all duration-300 hover:shadow-3xl">
       <div className="flex flex-col items-center">
-        <div className="text-lg mb-10 font-light text-[var(--text-color-2)] tracking-[2px] uppercase">
+        <div className="text-lg mb-6 sm:mb-10 font-light text-[var(--text-color-2)] tracking-[2px] uppercase">
           ⏱️ 스톱워치
         </div>
 
-        <div className="animate-fade-in mb-16">
+        <div className="animate-fade-in mb-10 sm:mb-16">
           <div className="flex items-baseline gap-1">
             <span
-              className="text-[80px] font-bold text-[var(--text-color-1)]"
+              className="text-[48px] sm:text-[80px] font-bold text-[var(--text-color-1)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               {time.minutes}:{time.seconds}
             </span>
             <span
-              className="text-4xl font-semibold text-[var(--text-color-2)]"
+              className="text-2xl sm:text-4xl font-semibold text-[var(--text-color-2)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               .{time.milliseconds}
@@ -205,11 +205,11 @@ export default function StopwatchPage() {
           </div>
         </div>
 
-        <div className="flex gap-4 mb-10 flex-wrap justify-center">
+        <div className="flex gap-2 sm:gap-4 mb-6 sm:mb-10 flex-wrap justify-center">
           {isRunning && (
             <button
               onClick={recordLap}
-              className="px-8 py-3.5 bg-gradient-to-r from-[#10B981] to-[#059669] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[130px] flex items-center justify-center gap-2"
+              className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#10B981] to-[#059669] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[120px] sm:min-w-[130px] flex items-center justify-center gap-2"
             >
               <span>📝</span>
               <span>기록</span>
@@ -218,7 +218,7 @@ export default function StopwatchPage() {
           {isRunning && (
             <button
               onClick={stopStopwatch}
-              className="px-8 py-3.5 bg-gradient-to-r from-[var(--bg-color-5)] to-[#F7B628] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[130px] flex items-center justify-center gap-2"
+              className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-gradient-to-r from-[var(--bg-color-5)] to-[#F7B628] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[120px] sm:min-w-[130px] flex items-center justify-center gap-2"
             >
               <span>⏸</span>
               <span>중지</span>
@@ -228,14 +228,14 @@ export default function StopwatchPage() {
             <>
               <button
                 onClick={resetStopwatch}
-                className="px-8 py-3.5 bg-gradient-to-r from-[#EF4444] to-[#DC2626] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[130px] flex items-center justify-center gap-2"
+                className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#EF4444] to-[#DC2626] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[120px] sm:min-w-[130px] flex items-center justify-center gap-2"
               >
                 <span>🔄</span>
                 <span>초기화</span>
               </button>
               <button
                 onClick={() => startStopwatch()}
-                className="px-8 py-3.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[130px] flex items-center justify-center gap-2"
+                className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[120px] sm:min-w-[130px] flex items-center justify-center gap-2"
               >
                 <span>▶️</span>
                 <span>재시작</span>
@@ -245,7 +245,7 @@ export default function StopwatchPage() {
           {!isRunning && !isPaused && (
             <button
               onClick={() => startStopwatch()}
-              className="px-8 py-3.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[130px] flex items-center justify-center gap-2"
+              className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[120px] sm:min-w-[130px] flex items-center justify-center gap-2"
             >
               <span>▶️</span>
               <span>시작</span>
@@ -255,7 +255,7 @@ export default function StopwatchPage() {
 
         {lapTimes.length > 0 && (
           <div className="w-full max-w-2xl mt-4">
-            <div className="flex justify-between items-center mb-4 px-4">
+            <div className="flex justify-between items-center mb-3 sm:mb-4 px-2 sm:px-4">
               <h3 className="text-lg font-semibold text-[var(--text-color-1)]">
                 랩 타임 기록 ({lapTimes.length})
               </h3>

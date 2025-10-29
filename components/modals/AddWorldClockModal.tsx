@@ -45,12 +45,12 @@ export default function AddWorldClockModal({ onClose, onSave }: AddWorldClockMod
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
         className="absolute inset-0 bg-[var(--modal-bg-color-1)] backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="relative bg-[var(--bg-color-2)] rounded-2xl shadow-2xl w-[90%] max-w-2xl p-6 animate-fade-in-up max-h-[80vh] overflow-hidden flex flex-col">
+      <div className="relative bg-[var(--bg-color-2)] rounded-2xl shadow-2xl w-[95%] sm:w-[90%] max-w-2xl p-4 sm:p-6 animate-fade-in-up max-h-[70vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[var(--bg-color-1)] transition-colors z-10"
@@ -58,7 +58,7 @@ export default function AddWorldClockModal({ onClose, onSave }: AddWorldClockMod
           ✕
         </button>
 
-        <h2 className="text-xl font-bold text-center mb-4 text-[var(--text-color-1)]">
+        <h2 className="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-[var(--text-color-1)]">
           세계 시계 추가
         </h2>
 
@@ -67,7 +67,7 @@ export default function AddWorldClockModal({ onClose, onSave }: AddWorldClockMod
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="도시 또는 국가 검색..."
-          className="w-full px-4 py-3 rounded-xl border-2 border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)] mb-4"
+          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border-2 border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)] mb-3 sm:mb-4"
         />
 
         <div className="overflow-y-auto flex-1">
@@ -79,18 +79,18 @@ export default function AddWorldClockModal({ onClose, onSave }: AddWorldClockMod
                 <button
                   key={tz.timezone}
                   onClick={() => handleSelect(tz)}
-                  className="w-full p-4 text-left rounded-xl bg-[var(--bg-color-1)] hover:bg-[var(--bg-color-3)] transition-all duration-300 hover:translate-x-1"
+                  className="w-full p-3 sm:p-4 text-left rounded-xl bg-[var(--bg-color-1)] hover:bg-[var(--bg-color-3)] transition-all duration-300 hover:translate-x-1"
                 >
                   <div className="flex justify-between items-center">
                     <div>
-                      <div className="font-semibold text-[var(--text-color-1)]">
+                      <div className="font-semibold text-[var(--text-color-1)] text-sm sm:text-base">
                         {tz.city}
                       </div>
-                      <div className="text-sm text-[var(--text-color-2)]">
+                      <div className="text-xs sm:text-sm text-[var(--text-color-2)]">
                         {tz.country} (UTC{offset})
                       </div>
                     </div>
-                    <div className="text-xl font-semibold text-[var(--text-color-1)]">
+                    <div className="text-lg sm:text-xl font-semibold text-[var(--text-color-1)]">
                       {now.format('HH:mm')}
                     </div>
                   </div>

@@ -44,22 +44,22 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-[var(--bg-color-2)] shadow-md backdrop-blur-md transition-all duration-300">
-      <div className="max-w-[1200px] mx-auto px-6 h-[70px] flex items-center justify-between">
+      <div className="max-w-[1200px] mx-auto px-3 sm:px-6 h-[60px] sm:h-[70px] flex items-center justify-between gap-2 sm:gap-4">
         <Link href="/" className="logo-link transition-transform duration-300 hover:scale-105">
-          <div className="flex items-center gap-2">
-            <span className="text-[28px] animate-pulse-custom">⏰</span>
-            <span className="text-2xl font-bold bg-gradient-to-r from-[#67CDFD] to-[#0088C7] bg-clip-text text-transparent">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-[20px] sm:text-[28px] animate-pulse-custom">⏰</span>
+            <span className="text-base sm:text-2xl font-bold bg-gradient-to-r from-[#67CDFD] to-[#0088C7] bg-clip-text text-transparent">
               WWCLOCK
             </span>
           </div>
         </Link>
 
-        <nav className="flex gap-3">
+        <nav className="flex gap-1 sm:gap-3">
           {navItems.map(({ href, label, icon }) => (
             <Link
               key={href}
               href={href}
-              className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl transition-all duration-300 relative
+              className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-all duration-300 relative
                 ${
                   pathnameWithoutLocale === href
                     ? 'text-[var(--bg-color-4)] bg-[var(--bg-color-1)] font-bold'
@@ -67,10 +67,10 @@ export default function Header() {
                 }
               `}
             >
-              <span className="text-lg transition-transform duration-300 hover:scale-125">
+              <span className="text-base sm:text-lg transition-transform duration-300 hover:scale-125">
                 {icon}
               </span>
-              <span className="text-[15px] font-semibold">{label}</span>
+              <span className="hidden md:inline text-[15px] font-semibold">{label}</span>
               {pathnameWithoutLocale === href && (
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/5 h-0.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] rounded-full" />
               )}
@@ -78,10 +78,10 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-2 sm:gap-3 items-center">
           <button
             onClick={switchLocale}
-            className="w-10 h-10 flex items-center justify-center bg-[var(--bg-color-1)] rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:scale-110 active:scale-95 font-semibold text-sm"
+            className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[var(--bg-color-1)] rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:scale-110 active:scale-95 font-semibold text-xs sm:text-sm"
             title="Switch language"
             aria-label="Switch language"
           >
@@ -89,14 +89,14 @@ export default function Header() {
           </button>
           <button
             onClick={toggleDarkMode}
-            className="w-10 h-10 flex items-center justify-center bg-[var(--bg-color-1)] rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:rotate-[15deg] hover:scale-110 active:rotate-[15deg] active:scale-95"
+            className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-[var(--bg-color-1)] rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:rotate-[15deg] hover:scale-110 active:rotate-[15deg] active:scale-95"
             title={locale === 'ko' ? '다크모드 전환' : 'Toggle dark mode'}
             aria-label="Toggle dark mode"
           >
-            <span className="text-xl">{darkMode ? '🌙' : '☀️'}</span>
+            <span className="text-base sm:text-xl">{darkMode ? '🌙' : '☀️'}</span>
           </button>
           <button
-            className="w-10 h-10 flex items-center justify-center bg-[var(--bg-color-1)] rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:rotate-[15deg] hover:scale-110 active:rotate-[15deg] active:scale-95"
+            className="hidden sm:flex w-10 h-10 items-center justify-center bg-[var(--bg-color-1)] rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:rotate-[15deg] hover:scale-110 active:rotate-[15deg] active:scale-95"
             title={locale === 'ko' ? '설정' : 'Settings'}
             aria-label="Open settings"
           >

@@ -154,25 +154,25 @@ export default function AlarmPage() {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto p-5 min-h-[700px] bg-gradient-to-br from-[var(--bg-color-1)] to-[var(--bg-color-2)] rounded-3xl my-5 shadow-2xl transition-all duration-300 hover:shadow-3xl">
+    <div className="max-w-[1200px] mx-auto p-3 sm:p-5 min-h-[500px] sm:min-h-[700px] bg-gradient-to-br from-[var(--bg-color-1)] to-[var(--bg-color-2)] rounded-2xl sm:rounded-3xl my-3 sm:my-5 shadow-2xl transition-all duration-300 hover:shadow-3xl">
       <div className="flex flex-col items-center">
         {nextAlarm && (
-          <div className="animate-fade-in-up my-16 flex flex-col items-center">
-            <div className="w-80 h-80 rounded-full border-[6px] border-[var(--bg-color-4)] flex flex-col items-center justify-center bg-gradient-to-br from-[var(--bg-color-2)] to-[var(--bg-color-1)] animate-pulse-ring">
-              <div className="text-base mb-5 font-light opacity-80 tracking-wide">⏰ 다음 알람</div>
-              <div className="text-5xl mb-5 font-light flex items-center gap-1">
-                <span className="min-w-[60px] text-center">{timeToAlarm.hours}</span>
+          <div className="animate-fade-in-up my-8 sm:my-16 flex flex-col items-center">
+            <div className="w-60 h-60 sm:w-80 sm:h-80 rounded-full border-4 sm:border-[6px] border-[var(--bg-color-4)] flex flex-col items-center justify-center bg-gradient-to-br from-[var(--bg-color-2)] to-[var(--bg-color-1)] animate-pulse-ring">
+              <div className="text-sm sm:text-base mb-3 sm:mb-5 font-light opacity-80 tracking-wide">⏰ 다음 알람</div>
+              <div className="text-3xl sm:text-5xl mb-3 sm:mb-5 font-light flex items-center gap-1">
+                <span className="min-w-[45px] sm:min-w-[60px] text-center">{timeToAlarm.hours}</span>
                 <span className="opacity-50 animate-blink">:</span>
-                <span className="min-w-[60px] text-center">{timeToAlarm.minutes}</span>
+                <span className="min-w-[45px] sm:min-w-[60px] text-center">{timeToAlarm.minutes}</span>
                 <span className="opacity-50 animate-blink">:</span>
-                <span className="min-w-[60px] text-center">{timeToAlarm.seconds}</span>
+                <span className="min-w-[45px] sm:min-w-[60px] text-center">{timeToAlarm.seconds}</span>
               </div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">⏰</span>
-                <span className="text-xl font-light">{`${nextAlarm.amPm} ${nextAlarm.hour}:${nextAlarm.minute}`}</span>
+                <span className="text-base sm:text-xl">⏰</span>
+                <span className="text-base sm:text-xl font-light">{`${nextAlarm.amPm} ${nextAlarm.hour}:${nextAlarm.minute}`}</span>
               </div>
               {nextAlarm.alarmName && (
-                <div className="text-sm text-[var(--text-color-2)] mt-2 italic">{nextAlarm.alarmName}</div>
+                <div className="text-xs sm:text-sm text-[var(--text-color-2)] mt-2 italic px-4 text-center">{nextAlarm.alarmName}</div>
               )}
               {nextAlarm.repeat && nextAlarm.repeat.length > 0 && (
                 <div className="text-xs text-[var(--text-color-2)] mt-1">
@@ -183,24 +183,24 @@ export default function AlarmPage() {
           </div>
         )}
 
-        <div className="animate-fade-in p-10 flex flex-col items-center">
-          <div className="text-base mb-4 font-light text-[var(--text-color-2)] tracking-[2px] uppercase">
+        <div className="animate-fade-in p-5 sm:p-10 flex flex-col items-center">
+          <div className="text-sm sm:text-base mb-3 sm:mb-4 font-light text-[var(--text-color-2)] tracking-[2px] uppercase">
             현재시간
           </div>
           <div
-            className="text-7xl mb-4 font-bold text-[var(--text-color-1)]"
+            className="text-4xl sm:text-7xl mb-3 sm:mb-4 font-bold text-[var(--text-color-1)]"
             style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
           >
             {currentTime.time}
           </div>
-          <div className="text-xl mb-12 font-light text-[var(--text-color-2)]">{currentTime.date}</div>
+          <div className="text-base sm:text-xl mb-8 sm:mb-12 font-light text-[var(--text-color-2)]">{currentTime.date}</div>
 
           <button
             onClick={() => {
               setEditingAlarm(null);
               setShowSetModal(true);
             }}
-            className="px-9 py-3.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 flex items-center gap-2"
+            className="px-6 sm:px-9 py-3 sm:py-3.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 flex items-center gap-2"
           >
             <span>{alarms.length === 0 ? '⏰' : '➕'}</span>
             <span>{alarms.length === 0 ? '알람설정' : '알람 추가'}</span>
@@ -208,11 +208,11 @@ export default function AlarmPage() {
         </div>
 
         {alarms.length > 0 && (
-          <div className="w-full max-w-3xl mt-8 px-4">
-            <h3 className="text-xl font-semibold mb-4 text-[var(--text-color-1)]">
+          <div className="w-full max-w-3xl mt-6 sm:mt-8 px-2 sm:px-4">
+            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[var(--text-color-1)]">
               알람 목록 ({alarms.length})
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {alarms
                 .sort((a, b) => {
                   const [aH, aM] = a.fullTime.split(':').map(Number);
@@ -222,26 +222,26 @@ export default function AlarmPage() {
                 .map((alarm) => (
                   <div
                     key={alarm.id}
-                    className={`flex items-center justify-between p-5 bg-[var(--bg-color-2)] rounded-2xl shadow-md transition-all duration-300 hover:shadow-lg hover:translate-x-1 ${
+                    className={`flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-[var(--bg-color-2)] rounded-xl sm:rounded-2xl shadow-md transition-all duration-300 hover:shadow-lg ${
                       !alarm.enabled ? 'opacity-50' : ''
                     }`}
                   >
-                    <div className="flex items-center gap-4 flex-1">
+                    <div className="flex items-center gap-3 sm:gap-4 flex-1 w-full">
                       <input
                         type="checkbox"
                         checked={alarm.enabled}
                         onChange={() => toggleAlarm(alarm.id)}
-                        className="w-6 h-6 cursor-pointer accent-[var(--bg-color-4)]"
+                        className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer accent-[var(--bg-color-4)] flex-shrink-0"
                       />
                       <div className="flex-1">
-                        <div className="text-3xl font-semibold text-[var(--text-color-1)]">
+                        <div className="text-2xl sm:text-3xl font-semibold text-[var(--text-color-1)]">
                           {alarm.amPm} {alarm.hour}:{alarm.minute}
                         </div>
                         {alarm.alarmName && (
                           <div className="text-sm text-[var(--text-color-2)] mt-1">{alarm.alarmName}</div>
                         )}
                         {alarm.repeat && alarm.repeat.length > 0 && (
-                          <div className="flex gap-1 mt-2">
+                          <div className="flex flex-wrap gap-1 mt-2">
                             {alarm.repeat.map((day) => (
                               <span
                                 key={day}
@@ -254,16 +254,16 @@ export default function AlarmPage() {
                         )}
                       </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 w-full sm:w-auto">
                       <button
                         onClick={() => editAlarm(alarm)}
-                        className="px-4 py-2 bg-[var(--bg-color-4)] text-white rounded-lg hover:bg-[var(--bg-hover-color-1)] transition-colors"
+                        className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-[var(--bg-color-4)] text-white rounded-lg hover:bg-[var(--bg-hover-color-1)] transition-colors text-sm sm:text-base"
                       >
                         수정
                       </button>
                       <button
                         onClick={() => deleteAlarm(alarm.id)}
-                        className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                        className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm sm:text-base"
                       >
                         삭제
                       </button>

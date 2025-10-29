@@ -168,35 +168,35 @@ export default function TimerPage() {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto p-10 min-h-[700px] bg-gradient-to-br from-[var(--bg-color-1)] to-[var(--bg-color-2)] rounded-3xl my-5 shadow-2xl transition-all duration-300 hover:shadow-3xl">
+    <div className="max-w-[1200px] mx-auto p-3 sm:p-10 min-h-[500px] sm:min-h-[700px] bg-gradient-to-br from-[var(--bg-color-1)] to-[var(--bg-color-2)] rounded-2xl sm:rounded-3xl my-3 sm:my-5 shadow-2xl transition-all duration-300 hover:shadow-3xl">
       <div className="flex flex-col items-center">
-        <div className="text-lg mb-10 font-light text-[var(--text-color-2)] tracking-[2px] uppercase">
+        <div className="text-lg mb-6 sm:mb-10 font-light text-[var(--text-color-2)] tracking-[2px] uppercase">
           ⏲️ 타이머
         </div>
 
-        <div className="animate-fade-in flex items-center gap-5 mb-20">
+        <div className="animate-fade-in flex items-center gap-3 sm:gap-5 mb-10 sm:mb-20">
           {time.days && (
-            <div className="text-5xl font-bold text-[var(--bg-color-4)]">
-              {time.days}<span className="text-2xl font-semibold text-[var(--text-color-2)] ml-2">일</span>
+            <div className="text-3xl sm:text-5xl font-bold text-[var(--bg-color-4)]">
+              {time.days}<span className="text-xl sm:text-2xl font-semibold text-[var(--text-color-2)] ml-2">일</span>
             </div>
           )}
-          <div className="flex items-center text-[80px] font-bold">
+          <div className="flex items-center text-[48px] sm:text-[80px] font-bold">
             <span
-              className="min-w-[100px] text-center text-[var(--text-color-1)]"
+              className="min-w-[60px] sm:min-w-[100px] text-center text-[var(--text-color-1)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               {time.hours}
             </span>
             <span className="opacity-50 animate-blink">:</span>
             <span
-              className="min-w-[100px] text-center text-[var(--text-color-1)]"
+              className="min-w-[60px] sm:min-w-[100px] text-center text-[var(--text-color-1)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               {time.minutes}
             </span>
             <span className="opacity-50 animate-blink">:</span>
             <span
-              className="min-w-[100px] text-center text-[var(--text-color-1)]"
+              className="min-w-[60px] sm:min-w-[100px] text-center text-[var(--text-color-1)]"
               style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
             >
               {time.seconds}
@@ -204,11 +204,11 @@ export default function TimerPage() {
           </div>
         </div>
 
-        <div className="flex gap-4 flex-wrap justify-center mb-8">
+        <div className="flex gap-2 sm:gap-4 flex-wrap justify-center mb-6 sm:mb-8">
           {!isRunning && !isPaused && (
             <button
               onClick={() => setShowSetModal(true)}
-              className="px-8 py-3.5 bg-gradient-to-r from-[#A78BFA] to-[#8B5CF6] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[140px] flex items-center justify-center gap-2"
+              className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#A78BFA] to-[#8B5CF6] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[120px] sm:min-w-[140px] flex items-center justify-center gap-2"
             >
               <span>⚙️</span>
               <span>타이머설정</span>
@@ -218,14 +218,14 @@ export default function TimerPage() {
             <>
               <button
                 onClick={resetTimer}
-                className="px-8 py-3.5 bg-gradient-to-r from-[#F59E0B] to-[#D97706] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[140px] flex items-center justify-center gap-2"
+                className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#F59E0B] to-[#D97706] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[120px] sm:min-w-[140px] flex items-center justify-center gap-2"
               >
                 <span>🔄</span>
                 <span>재설정</span>
               </button>
               <button
                 onClick={() => startTimer()}
-                className="px-8 py-3.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[140px] flex items-center justify-center gap-2"
+                className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[120px] sm:min-w-[140px] flex items-center justify-center gap-2"
               >
                 <span>▶️</span>
                 <span>계속하기</span>
@@ -235,7 +235,7 @@ export default function TimerPage() {
           {isRunning && (
             <button
               onClick={stopTimer}
-              className="px-8 py-3.5 bg-gradient-to-r from-[var(--bg-color-5)] to-[#F7B628] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[140px] flex items-center justify-center gap-2"
+              className="px-4 sm:px-8 py-2.5 sm:py-3.5 bg-gradient-to-r from-[var(--bg-color-5)] to-[#F7B628] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl min-w-[120px] sm:min-w-[140px] flex items-center justify-center gap-2"
             >
               <span>⏸</span>
               <span>중지</span>
@@ -244,7 +244,7 @@ export default function TimerPage() {
           {timerObj && (isPaused || isRunning) && (
             <button
               onClick={saveAsPreset}
-              className="px-6 py-3.5 bg-[var(--bg-color-1)] text-[var(--text-color-1)] rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+              className="px-4 sm:px-6 py-2.5 sm:py-3.5 bg-[var(--bg-color-1)] text-[var(--text-color-1)] rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
             >
               💾 프리셋 저장
             </button>
@@ -253,8 +253,8 @@ export default function TimerPage() {
 
         {presets.length > 0 && (
           <div className="w-full max-w-2xl mt-4">
-            <h3 className="text-lg font-semibold mb-3 text-[var(--text-color-1)]">타이머 프리셋</h3>
-            <div className="grid grid-cols-2 gap-3">
+            <h3 className="text-lg font-semibold mb-2 sm:mb-3 text-[var(--text-color-1)]">타이머 프리셋</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               {presets.map((preset) => (
                 <div
                   key={preset.id}

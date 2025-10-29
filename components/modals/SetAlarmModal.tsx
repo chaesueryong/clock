@@ -55,12 +55,12 @@ export default function SetAlarmModal({ onClose, onSave, editAlarm }: SetAlarmMo
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
         className="absolute inset-0 bg-[var(--modal-bg-color-1)] backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="relative bg-[var(--bg-color-2)] rounded-2xl shadow-2xl w-[90%] max-w-2xl p-6 animate-fade-in-up">
+      <div className="relative bg-[var(--bg-color-2)] rounded-2xl shadow-2xl w-[95%] sm:w-[90%] max-w-2xl p-4 sm:p-6 animate-fade-in-up">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[var(--bg-color-1)] transition-colors"
@@ -68,21 +68,21 @@ export default function SetAlarmModal({ onClose, onSave, editAlarm }: SetAlarmMo
           ✕
         </button>
 
-        <h2 className="text-xl font-bold text-center mb-6 text-[var(--text-color-1)]">
+        <h2 className="text-lg sm:text-xl font-bold text-center mb-4 sm:mb-6 text-[var(--text-color-1)]">
           {editAlarm ? '알람 수정' : '알람 설정'}
         </h2>
 
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {/* 시간 선택 */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <label className="w-24 text-sm font-medium text-[var(--text-color-1)]">
               시간 선택
             </label>
-            <div className="flex-1 flex gap-3">
+            <div className="flex-1 flex gap-2 sm:gap-3">
               <select
                 value={amPm}
                 onChange={(e) => setAmPm(e.target.value)}
-                className="px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
+                className="px-3 sm:px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] text-sm sm:text-base cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
               >
                 <option>오전</option>
                 <option>오후</option>
@@ -91,7 +91,7 @@ export default function SetAlarmModal({ onClose, onSave, editAlarm }: SetAlarmMo
               <select
                 value={hour}
                 onChange={(e) => setHour(e.target.value)}
-                className="px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
+                className="px-3 sm:px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] text-sm sm:text-base cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
               >
                 {hours.map((h) => (
                   <option key={h} value={h}>
@@ -103,7 +103,7 @@ export default function SetAlarmModal({ onClose, onSave, editAlarm }: SetAlarmMo
               <select
                 value={minute}
                 onChange={(e) => setMinute(e.target.value)}
-                className="px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
+                className="px-3 sm:px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] text-sm sm:text-base cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
               >
                 {minutes.map((m) => (
                   <option key={m} value={m}>
@@ -115,7 +115,7 @@ export default function SetAlarmModal({ onClose, onSave, editAlarm }: SetAlarmMo
           </div>
 
           {/* 반복 */}
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3 sm:gap-4">
             <label className="w-24 text-sm font-medium text-[var(--text-color-1)] pt-2">
               반복
             </label>
@@ -137,7 +137,7 @@ export default function SetAlarmModal({ onClose, onSave, editAlarm }: SetAlarmMo
           </div>
 
           {/* 알람 이름 */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <label className="w-24 text-sm font-medium text-[var(--text-color-1)]">
               알람 이름
             </label>
@@ -146,19 +146,19 @@ export default function SetAlarmModal({ onClose, onSave, editAlarm }: SetAlarmMo
               value={alarmName}
               onChange={(e) => setAlarmName(e.target.value)}
               placeholder="알람 이름을 입력하세요"
-              className="flex-1 px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
+              className="flex-1 px-3 sm:px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
             />
           </div>
 
           {/* 알림음 */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <label className="w-24 text-sm font-medium text-[var(--text-color-1)]">
               알림음
             </label>
             <select
               value={alarmMusic}
               onChange={(e) => setAlarmMusic(e.target.value)}
-              className="flex-1 px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
+              className="flex-1 px-3 sm:px-4 py-2 rounded-full border border-[var(--border-color-2)] bg-[var(--bg-color-7)] text-[var(--text-color-1)] text-sm sm:text-base cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--bg-color-4)]"
             >
               <option>새소리</option>
               <option>벨소리</option>
@@ -169,16 +169,16 @@ export default function SetAlarmModal({ onClose, onSave, editAlarm }: SetAlarmMo
         </div>
 
         {/* 버튼 */}
-        <div className="flex gap-4 justify-center mt-8">
+        <div className="flex gap-2 sm:gap-3 justify-center mt-6 sm:mt-8">
           <button
             onClick={onClose}
-            className="px-6 py-2.5 rounded-full text-[var(--text-color-1)] hover:bg-[var(--bg-color-1)] transition-colors"
+            className="px-4 sm:px-6 py-2.5 rounded-full text-[var(--text-color-1)] text-sm sm:text-base hover:bg-[var(--bg-color-1)] transition-colors"
           >
             취소
           </button>
           <button
             onClick={handleSave}
-            className="px-8 py-2.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+            className="px-5 sm:px-8 py-2.5 bg-gradient-to-r from-[var(--bg-color-4)] to-[var(--bg-color-6)] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
           >
             {editAlarm ? '수정하기' : '설정하기'}
           </button>

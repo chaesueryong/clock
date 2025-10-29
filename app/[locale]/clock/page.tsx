@@ -71,23 +71,23 @@ export default function ClockPage() {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto p-5 min-h-[700px] bg-gradient-to-br from-[var(--bg-color-1)] to-[var(--bg-color-2)] rounded-3xl my-5 shadow-2xl transition-all duration-300 hover:shadow-3xl">
+    <div className="max-w-[1200px] mx-auto p-3 sm:p-5 min-h-[500px] sm:min-h-[700px] bg-gradient-to-br from-[var(--bg-color-1)] to-[var(--bg-color-2)] rounded-2xl sm:rounded-3xl my-3 sm:my-5 shadow-2xl transition-all duration-300 hover:shadow-3xl">
       <div className="flex flex-col items-center">
-        <div className="animate-fade-in p-10 flex flex-col items-center mb-8">
+        <div className="animate-fade-in p-3 sm:p-10 flex flex-col items-center mb-6 sm:mb-8">
           <div className="text-base mb-4 font-light text-[var(--text-color-2)] tracking-[2px] uppercase">
             현재시간 (서울)
           </div>
           <div
-            className="text-7xl mb-4 font-bold text-[var(--text-color-1)]"
+            className="text-4xl sm:text-7xl mb-4 font-bold text-[var(--text-color-1)]"
             style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
           >
             {currentTime.time}
           </div>
-          <div className="text-xl mb-8 font-light text-[var(--text-color-2)]">{currentTime.date}</div>
+          <div className="text-lg sm:text-xl mb-6 sm:mb-8 font-light text-[var(--text-color-2)]">{currentTime.date}</div>
 
           <button
             onClick={() => setShowModal(true)}
-            className="px-9 py-3.5 bg-gradient-to-r from-[#5ABD8C] to-[#34A853] text-white rounded-full font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 flex items-center gap-2"
+            className="px-6 sm:px-9 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#5ABD8C] to-[#34A853] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 flex items-center gap-2"
           >
             <span>➕</span>
             <span>시계 추가</span>
@@ -95,11 +95,11 @@ export default function ClockPage() {
         </div>
 
         {worldClocks.length > 0 && (
-          <div className="w-full max-w-4xl px-4">
-            <h3 className="text-xl font-semibold mb-4 text-[var(--text-color-1)]">
+          <div className="w-full max-w-4xl px-2 sm:px-4">
+            <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[var(--text-color-1)]">
               세계 시계 ({worldClocks.length})
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {worldClocks.map((clock) => (
                 <div
                   key={clock.id}
@@ -120,7 +120,7 @@ export default function ClockPage() {
                     </div>
                   </div>
                   <div
-                    className="text-4xl font-bold text-[var(--text-color-1)]"
+                    className="text-2xl sm:text-4xl font-bold text-[var(--text-color-1)]"
                     style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
                   >
                     {clockTimes[clock.id] || '--:--:--'}
