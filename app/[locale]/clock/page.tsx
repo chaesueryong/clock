@@ -71,14 +71,14 @@ export default function ClockPage() {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto p-3 sm:p-5 min-h-[500px] sm:min-h-[700px] bg-gradient-to-br from-[var(--bg-color-1)] to-[var(--bg-color-2)] rounded-2xl sm:rounded-3xl my-3 sm:my-5 shadow-2xl transition-all duration-300 hover:shadow-3xl">
+    <div className="max-w-[1200px] mx-auto p-3 sm:p-5 min-h-[500px] sm:min-h-[700px] glass-card rounded-2xl sm:rounded-3xl my-3 sm:my-5 shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-300 hover:shadow-[0_12px_48px_rgba(0,0,0,0.18)]">
       <div className="flex flex-col items-center">
         <div className="animate-fade-in p-3 sm:p-10 flex flex-col items-center mb-6 sm:mb-8">
           <div className="text-base mb-4 font-light text-[var(--text-color-2)] tracking-[2px] uppercase">
             현재시간 (서울)
           </div>
           <div
-            className="text-4xl sm:text-7xl mb-4 font-bold text-[var(--text-color-1)]"
+            className="text-4xl sm:text-7xl mb-4 font-bold text-[var(--text-color-1)] neon-glow"
             style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
           >
             {currentTime.time}
@@ -87,7 +87,7 @@ export default function ClockPage() {
 
           <button
             onClick={() => setShowModal(true)}
-            className="px-6 sm:px-9 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#5ABD8C] to-[#34A853] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 flex items-center gap-2"
+            className="px-6 sm:px-9 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#5ABD8C] to-[#34A853] text-white rounded-full font-semibold text-sm sm:text-base shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 flex items-center gap-2"
           >
             <span>➕</span>
             <span>시계 추가</span>
@@ -103,7 +103,7 @@ export default function ClockPage() {
               {worldClocks.map((clock) => (
                 <div
                   key={clock.id}
-                  className="p-6 bg-[var(--bg-color-2)] rounded-2xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105 relative"
+                  className="p-6 glass-card rounded-2xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-[1.02] relative"
                 >
                   <button
                     onClick={() => deleteClock(clock.id)}

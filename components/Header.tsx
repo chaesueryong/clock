@@ -43,7 +43,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--bg-color-2)] shadow-md backdrop-blur-md transition-all duration-300">
+    <header className="sticky top-0 z-50 glass backdrop-blur-xl shadow-md transition-all duration-300 border-b border-[var(--border-color-1)]">
       <div className="max-w-[1200px] mx-auto px-3 sm:px-6 h-[60px] sm:h-[70px] flex items-center justify-between gap-2 sm:gap-4">
         <Link href="/" className="logo-link transition-transform duration-300 hover:scale-105">
           <div className="flex items-center gap-1 sm:gap-2">
