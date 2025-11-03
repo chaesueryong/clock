@@ -47,3 +47,20 @@ export interface AlarmSound {
   url: string;
   isCustom: boolean;
 }
+
+export interface SegmentColors {
+  active: string;        // 활성화된 세그먼트 색상
+  inactive: string;      // 비활성화된 세그먼트 색상
+  background: string;    // 배경 색상
+  glow: string;         // 글로우 효과 색상
+}
+
+export interface AppSettings {
+  segmentColors: SegmentColors;
+  displayType: 'digital' | 'analog' | 'text';
+  showSeconds: boolean;
+  use24Hour: boolean;
+  theme: 'light' | 'dark' | 'auto';
+  fontSize: 'small' | 'medium' | 'large';
+  enableAnimations: boolean;
+}

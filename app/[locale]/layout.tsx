@@ -6,6 +6,7 @@ import { locales } from '@/i18n/config';
 import '../globals.css';
 import Header from '@/components/Header';
 import StructuredData from '@/components/StructuredData';
+import SettingsProvider from '@/components/SettingsProvider';
 
 type Props = {
   children: React.ReactNode;
@@ -102,10 +103,12 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body className="antialiased">
         <NextIntlClientProvider messages={messages}>
-          <div className="flex flex-col h-screen">
-            <Header />
-            <main className="flex-1 overflow-auto">{children}</main>
-          </div>
+          <SettingsProvider>
+            <div className="flex flex-col h-screen">
+              <Header />
+              <main className="flex-1 overflow-auto">{children}</main>
+            </div>
+          </SettingsProvider>
         </NextIntlClientProvider>
       </body>
     </html>

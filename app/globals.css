@@ -42,6 +42,12 @@
   --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
   --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+
+  /* Segment Colors (customizable) */
+  --segment-color-active: #3b82f6;
+  --segment-color-inactive: #374151;
+  --segment-color-background: transparent;
+  --segment-color-glow: #3b82f6;
 }
 
 :root.dark {
@@ -84,6 +90,12 @@
   --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
   --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+
+  /* Segment Colors (customizable) - will be overridden by user settings */
+  --segment-color-active: #3b82f6;
+  --segment-color-inactive: #374151;
+  --segment-color-background: transparent;
+  --segment-color-glow: #3b82f6;
 }
 
 * {
