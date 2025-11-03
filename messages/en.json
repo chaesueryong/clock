@@ -1,0 +1,99 @@
+{
+  "common": {
+    "currentTime": "Current Time",
+    "am": "AM",
+    "pm": "PM",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "hour": "Hour",
+    "minute": "Minute",
+    "second": "Second",
+    "day": "Day",
+    "days": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    },
+    "repeat": "Repeat",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "reset": "Reset"
+  },
+  "alarm": {
+    "title": "Alarm",
+    "setAlarm": "Set Alarm",
+    "addAlarm": "Add Alarm",
+    "nextAlarm": "Next Alarm",
+    "alarmList": "Alarm List",
+    "alarmName": "Alarm Name",
+    "alarmSound": "Alarm Sound",
+    "selectTime": "Select Time",
+    "selectRepeat": "Repeat Days",
+    "editAlarm": "Edit Alarm",
+    "alarmSet": "Alarm has been set!",
+    "sounds": {
+      "bird": "Bird",
+      "bell": "Bell",
+      "piano": "Piano"
+    }
+  },
+  "timer": {
+    "title": "Timer",
+    "setTimer": "Set Timer",
+    "timerEnd": "Timer has ended!",
+    "presets": "Presets",
+    "addPreset": "Add Preset",
+    "presetName": "Preset Name",
+    "selectDuration": "Set Duration"
+  },
+  "stopwatch": {
+    "title": "Stopwatch",
+    "lap": "Lap",
+    "lapTime": "Lap Time",
+    "lapNumber": "Lap",
+    "totalTime": "Total Time",
+    "fastest": "Fastest",
+    "slowest": "Slowest"
+  },
+  "worldClock": {
+    "title": "World Clock",
+    "addClock": "Add Clock",
+    "worldClocks": "World Clocks",
+    "currentTimeSeoul": "Current Time (Seoul)",
+    "selectCity": "Select City",
+    "cityName": "City Name",
+    "timezone": "Timezone",
+    "timeDifference": "Time Difference"
+  },
+  "metadata": {
+    "home": {
+      "title": "WWCLOCK - Free Online Alarm, Timer, Stopwatch, World Clock",
+      "description": "Free online clock app. Alarm, timer, stopwatch, and world clock features in one place. Supports mobile and PC. Browser notifications enabled."
+    },
+    "timer": {
+      "title": "Timer - Online Countdown Timer",
+      "description": "Accurate online timer. Set hours, minutes, and seconds. Save presets. Browser notifications supported."
+    },
+    "stopwatch": {
+      "title": "Stopwatch - Lap Time Recording Stopwatch",
+      "description": "Online stopwatch with millisecond accuracy. Record lap times and view fastest/slowest records."
+    },
+    "worldClock": {
+      "title": "World Clock - Check World Times",
+      "description": "View current times of major cities worldwide at a glance. Display multiple time zones simultaneously."
+    }
+  },
+  "notification": {
+    "alarmTitle": "Alarm",
+    "timerTitle": "Timer Ended",
+    "timerBody": "Your timer has ended!"
+  }
+}

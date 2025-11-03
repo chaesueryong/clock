@@ -1,0 +1,99 @@
+{
+  "common": {
+    "currentTime": "현재시간",
+    "am": "오전",
+    "pm": "오후",
+    "save": "저장",
+    "cancel": "취소",
+    "edit": "수정",
+    "delete": "삭제",
+    "close": "닫기",
+    "hour": "시간",
+    "minute": "분",
+    "second": "초",
+    "day": "일",
+    "days": {
+      "mon": "월",
+      "tue": "화",
+      "wed": "수",
+      "thu": "목",
+      "fri": "금",
+      "sat": "토",
+      "sun": "일"
+    },
+    "repeat": "반복",
+    "start": "시작",
+    "pause": "일시정지",
+    "resume": "재시작",
+    "reset": "재설정"
+  },
+  "alarm": {
+    "title": "알람",
+    "setAlarm": "알람설정",
+    "addAlarm": "알람 추가",
+    "nextAlarm": "다음 알람",
+    "alarmList": "알람 목록",
+    "alarmName": "알람 이름",
+    "alarmSound": "알람음",
+    "selectTime": "시간 선택",
+    "selectRepeat": "반복 요일",
+    "editAlarm": "알람 수정",
+    "alarmSet": "알람이 설정되었습니다!",
+    "sounds": {
+      "bird": "새소리",
+      "bell": "벨소리",
+      "piano": "피아노"
+    }
+  },
+  "timer": {
+    "title": "타이머",
+    "setTimer": "타이머 설정",
+    "timerEnd": "타이머가 종료되었습니다!",
+    "presets": "프리셋",
+    "addPreset": "프리셋 추가",
+    "presetName": "프리셋 이름",
+    "selectDuration": "시간 설정"
+  },
+  "stopwatch": {
+    "title": "스톱워치",
+    "lap": "랩",
+    "lapTime": "랩타임",
+    "lapNumber": "랩",
+    "totalTime": "총 시간",
+    "fastest": "최고기록",
+    "slowest": "최저기록"
+  },
+  "worldClock": {
+    "title": "세계시계",
+    "addClock": "시계 추가",
+    "worldClocks": "세계 시계",
+    "currentTimeSeoul": "현재시간 (서울)",
+    "selectCity": "도시 선택",
+    "cityName": "도시 이름",
+    "timezone": "시간대",
+    "timeDifference": "시간차"
+  },
+  "metadata": {
+    "home": {
+      "title": "WWCLOCK - 무료 온라인 알람, 타이머, 스톱워치, 세계시계",
+      "description": "무료 온라인 시계 앱. 알람 설정, 타이머, 스톱워치, 세계시계 기능을 한 곳에서. 모바일과 PC 모두 지원. 브라우저 알림 지원."
+    },
+    "timer": {
+      "title": "타이머 - 온라인 카운트다운 타이머",
+      "description": "정확한 온라인 타이머. 시, 분, 초 단위 설정 가능. 프리셋 저장 기능. 브라우저 알림 지원."
+    },
+    "stopwatch": {
+      "title": "스톱워치 - 랩타임 기록 스톱워치",
+      "description": "밀리초 단위 정확도의 온라인 스톱워치. 랩타임 기록 및 최고/최저 기록 표시 기능."
+    },
+    "worldClock": {
+      "title": "세계시계 - 세계 시간 확인",
+      "description": "전 세계 주요 도시의 현재 시간을 한눈에 확인. 여러 시간대 동시 표시 가능."
+    }
+  },
+  "notification": {
+    "alarmTitle": "알람",
+    "timerTitle": "타이머 종료",
+    "timerBody": "설정한 타이머가 종료되었습니다!"
+  }
+}
