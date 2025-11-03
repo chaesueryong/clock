@@ -1,0 +1,21 @@
+{
+  "name": "WWCLOCK - 다기능 시계 앱",
+  "short_name": "WWCLOCK",
+  "description": "무료 온라인 시계 앱. 알람, 타이머, 스톱워치, 세계시계",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#67cdfd",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "lang": "ko-KR",
+  "dir": "ltr"
+}
