@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSystemStore } from '@/lib/stores/useSystemStore';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import SettingsModal from './modals/SettingsModal';
 
 export default function Header() {
   const pathname = usePathname();
@@ -12,6 +13,7 @@ export default function Header() {
   const locale = useLocale();
   const t = useTranslations();
   const { darkMode, toggleDarkMode } = useSystemStore();
+  const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
     // Initialize dark mode from localStorage
@@ -96,6 +98,7 @@ export default function Header() {
             <span className="text-base sm:text-xl">{darkMode ? '🌙' : '☀️'}</span>
           </button>
           <button
+            onClick={() => setShowSettings(true)}
             className="hidden sm:flex w-10 h-10 items-center justify-center bg-[var(--bg-color-1)] rounded-xl transition-all duration-300 hover:bg-[var(--bg-color-4)] hover:rotate-[15deg] hover:scale-110 active:rotate-[15deg] active:scale-95"
             title={locale === 'ko' ? '설정' : 'Settings'}
             aria-label="Open settings"
@@ -104,6 +107,8 @@ export default function Header() {
           </button>
         </div>
       </div>
+
+      {showSettings && <SettingsModal onClose={() => setShowSettings(false)} />}
     </header>
   );
 }

@@ -188,8 +188,16 @@ export default function AlarmPage() {
             현재시간
           </div>
           <div
-            className="text-4xl sm:text-7xl mb-3 sm:mb-4 font-bold text-[var(--text-color-1)] neon-glow"
-            style={{ fontFeatureSettings: '"tnum"', fontVariantNumeric: 'tabular-nums' }}
+            className="text-4xl sm:text-7xl mb-3 sm:mb-4 font-bold transition-all duration-300"
+            style={{
+              fontFeatureSettings: '"tnum"',
+              fontVariantNumeric: 'tabular-nums',
+              color: 'var(--segment-color-active)',
+              textShadow: '0 0 20px var(--segment-color-glow), 0 0 40px var(--segment-color-glow)',
+              backgroundColor: 'var(--segment-color-background)',
+              padding: '16px 24px',
+              borderRadius: '12px'
+            }}
           >
             {currentTime.time}
           </div>

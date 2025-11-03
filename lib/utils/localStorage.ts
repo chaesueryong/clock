@@ -13,6 +13,7 @@ export class LS {
   static dark = 'dark';
   static worldClocks = 'world_clocks'; // For world clocks
   static alarmSounds = 'alarm_sounds'; // For custom alarm sounds
+  static appSettings = 'app_settings'; // For application settings
 
   static get<T>(key: string, defaultValue: T | null = null): T | null {
     if (typeof window === 'undefined') return defaultValue;
@@ -53,6 +54,43 @@ export class LS {
       window.localStorage.clear();
     } catch (error) {
       console.error(`Error clearing localStorage: ${error}`);
+    }
+  }
+
+  // Export all settings as JSON
+  static exportSettings(): string {
+    if (typeof window === 'undefined') return '{}';
+
+    const settings = {
+      appSettings: this.get(this.appSettings, null),
+      alarms: this.get(this.alarms, null),
+      timerPresets: this.get(this.timerPresets, null),
+      worldClocks: this.get(this.worldClocks, null),
+      alarmSounds: this.get(this.alarmSounds, null),
+      dark: this.get(this.dark, null),
+    };
+
+    return JSON.stringify(settings, null, 2);
+  }
+
+  // Import settings from JSON
+  static importSettings(jsonString: string): boolean {
+    if (typeof window === 'undefined') return false;
+
+    try {
+      const settings = JSON.parse(jsonString);
+
+      if (settings.appSettings) this.set(this.appSettings, settings.appSettings);
+      if (settings.alarms) this.set(this.alarms, settings.alarms);
+      if (settings.timerPresets) this.set(this.timerPresets, settings.timerPresets);
+      if (settings.worldClocks) this.set(this.worldClocks, settings.worldClocks);
+      if (settings.alarmSounds) this.set(this.alarmSounds, settings.alarmSounds);
+      if (settings.dark !== null && settings.dark !== undefined) this.set(this.dark, settings.dark);
+
+      return true;
+    } catch (error) {
+      console.error(`Error importing settings: ${error}`);
+      return false;
     }
   }
 }
